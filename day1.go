@@ -16,15 +16,20 @@
 
          defer file.Close()
 
-// if { // Big loop to iterate through file
+	for {
 		data := make([]byte, 1)
 		count, err := file.Read(data)
+		if err != nil {
+			break
+		}
 		fmt.Printf("read %d byte: %q\n", count, data[:count])
-		if strings.EqualFold(string(data[:count]), "(") {  // this line doesn't work. bytes can't be compared with strings
+		if strings.EqualFold(string(data[:count]), "(") {  s
 			floor = floor + 1
 		} else {
 			floor = floor - 1
 		}
+		
+	}
 		fmt.Printf("Floor: %d\n", floor)
 // }
 		
