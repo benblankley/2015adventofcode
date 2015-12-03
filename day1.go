@@ -23,7 +23,7 @@
 			break
 		}
 		fmt.Printf("read %d byte: %q\n", count, data[:count])
-		if strings.EqualFold(string(data[:count]), "(") {  s
+		if strings.EqualFold(string(data[:count]), "(") {  
 			floor = floor + 1
 		} else {
 			floor = floor - 1
