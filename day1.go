@@ -20,12 +20,12 @@
 		data := make([]byte, 1)
 		count, err := file.Read(data)
 		fmt.Printf("read %d byte: %q\n", count, data[:count])
-		if strings.EqualFold(data[:count], "(") {  // this line doesn't work. bytes can't be compared with strings
+		if strings.EqualFold(string(data[:count]), "(") {  // this line doesn't work. bytes can't be compared with strings
 			floor = floor + 1
 		} else {
 			floor = floor - 1
 		}
-		fmt.Printf("Floor: %q\n", floor)
+		fmt.Printf("Floor: %d\n", floor)
 // }
 		
  }
