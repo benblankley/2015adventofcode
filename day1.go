@@ -18,15 +18,14 @@ func main() {
 
 	for {
 		data := make([]byte, 1)
-		count, err := file.Read(data)
+		_, err := file.Read(data)
 		if err != nil {
 			break
 		}
-		fmt.Printf("read %d byte: %q\n", count, data[:count])
-		if strings.EqualFold(string(data[:count]), "(") {
-			floor = floor + 1
+		if strings.EqualFold(string(data[0]), "(") {
+			floor++
 		} else {
-			floor = floor - 1
+			floor--
 		}
 
 	}
