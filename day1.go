@@ -15,6 +15,8 @@ func main() {
 	}
 
 	defer file.Close()
+	
+	step := 0
 
 	for {
 		data := make([]byte, 1)
@@ -27,7 +29,10 @@ func main() {
 		} else {
 			floor--
 		}
-
+		step++
+		if floor < 0 {
+			fmt.Printf("Basement reached at step: %d\n", step)
+		}
 	}
 	fmt.Printf("Floor: %d\n", floor)
 	// }
