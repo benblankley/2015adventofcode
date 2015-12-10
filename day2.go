@@ -29,13 +29,13 @@ func main() {
         h, _ := strconv.Atoi(coordinates[2])
         fmt.Printf("%d %d %d  cumulative area:%d ", l, w, h, area)
 	
-	if l*w < w*h && l*w < h*l {
+	if l*w <= w*h && l*w <= h*l {
 		areanew := (2*l*w + 2*w*h + 2*h*l)
 		areaextra := l*w
         fmt.Printf("l*w is smallest\n")
         fmt.Printf("%d %d\n", areanew, areaextra)
 	area = area + areanew + areaextra        
-	} else if w*h < l*w && w*h < h*l {
+	} else if w*h <= l*w && w*h <= h*l {
 		areanew := (2*l*w + 2*w*h + 2*h*l)
 		areaextra := w*h
         fmt.Printf("w*h is smallest\n")
