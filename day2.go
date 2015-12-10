@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
-	"os"
-//	"strings"
+    "bufio"
+    "fmt"
+    "os"
 )
 
 func main() {
@@ -15,14 +15,10 @@ func main() {
 
 	defer file.Close()
 	
-	for {
-
-		data := make([]byte, 9)
-		_, err := file.Read(data)
-		if err != nil {
-			break
-		}
-		fmt.Printf("Package: %q\n", data)
-
-	}
+	scanner := bufio.NewScanner(file)
+    for scanner.Scan() {
+        line := scanner.Text()
+        fmt.Printf("line is %[1]T %[1]q\n", line)
+    }
+	
 }
