@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	file, err := ioutil.ReadFile("day3input.txt"])
+	file, err := ioutil.ReadFile("day3input.txt")
 
 	// create new struct type called "house", which is basically an array of x and y coordinates
 	type house struct {
