@@ -32,7 +32,7 @@ func main() {
  			case '^': 
  				santa.y-- 
  			} 
- 		visitedhouses[*santa] = true
+ 		visitedhouses[santa] = true
 		} 
 		
 	fmt.Printf("Houses by just santa: %d", len(visitedhouses))
