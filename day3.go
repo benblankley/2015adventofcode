@@ -6,22 +6,23 @@ import (
 	"io/ioutil"
 )
 
-func main() {
-	file, err := ioutil.ReadFile("day3input.txt")
+// create new struct type called "house", which is basically an array of x and y coordinates
+type house struct {
+	x, y int
+}
 
-	// create new struct type called "house", which is basically an array of x and y coordinates
-	type house struct {
-		x, y int
-	}
+type presentCount map[house]int
+
+func main() {
+	inputfile, err := ioutil.ReadFile("day3input.txt")
 
 	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+		panic(err)
 	}
-	visitedhouses := make(map[house]int)
+	visitedhouses := make(presentCount)
 	
  		var santa house 
-  		for _, count := range file { 
+  		for _, count := range inputfile { 
  			switch count { 
  			case '<': 
  				santa.x-- 
