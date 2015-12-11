@@ -35,5 +35,5 @@ func main() {
  		visitedhouses[santa] = true
 		} 
 		
-	fmt.Printf("Houses by just santa: %d", len(visitedhouses))
+	fmt.Printf("Houses by Santa: %d", len(visitedhouses))
 }
