@@ -39,7 +39,7 @@ func main() {
 		}
 		visitedhouses[santaposition]++
 	}
-		
+	result := 0
 	for _, p := range visitedhouses {
 		result++
 	}
