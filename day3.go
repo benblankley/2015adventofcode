@@ -21,7 +21,7 @@ func main() {
 	visitedhouses := make(map[house]bool)
 	
  		var santa house 
-  		for _, count := range input { 
+  		for _, count := range file { 
  			switch count { 
  			case '<': 
  				santa.x-- 
