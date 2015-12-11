@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"io/ioutil"
+	"os"
 )
 
 // create new struct type called "house", which is basically an array of x and y coordinates
@@ -14,32 +14,31 @@ type house struct {
 type presentCount map[house]int
 
 func main() {
-	if len(os.Args) != 2 { 
- 		os.Exit(1) 
- 	} 
-
-	inputfile, err := ioutil.ReadFile(os.Args[1])
-
+	if len(os.Args) != 2 {
+		os.Exit(1)
+	}
+	input, err := ioutil.ReadFile(os.Args[1])
 	if err != nil {
 		panic(err)
 	}
+
 	visitedhouses := make(presentCount)
-	
- 		var santa house
- 		visitedhouses[santa]++
-  		for _, vm := range inputfile { 
- 			switch vm { 
- 			case '<': 
- 				santa.x-- 
- 			case 'v': 
- 				santa.y++ 
- 			case '>': 
- 				santa.x++ 
- 			case '^': 
- 				santa.y-- 
- 			} 
- 		visitedhouses[santa]++
-		} 
+
+	var santaposition house
+	visitedhouses[santaposition]++
+	for _, v := range input {
+		switch v {
+		case '<':
+			santaposition.x--
+		case 'v':
+			santaposition.y++
+		case '>':
+			santaposition.x++
+		case '^':
+			santaposition.y--
+		}
+		visitedhouses[curpos]++
+	}
 		
 	fmt.Println("Houses by Santa: %d", len(visitedhouses))
 }
