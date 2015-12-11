@@ -24,7 +24,7 @@ func main() {
 
 	visitedhouses := make(presentCount)
 
-	var santaposition house
+	santa := house{0, 0}
 	visitedhouses[santaposition]++
 	for _, v := range input {
 		switch v {
