@@ -40,7 +40,7 @@ func main() {
 		visitedhouses[santaposition]++
 	}
 		
-	for _, _ := range visitedhouses {
+	for _, p := range visitedhouses {
 		result++
 	}
 	fmt.Printf("%d houses have at least one present\n\n", result)
