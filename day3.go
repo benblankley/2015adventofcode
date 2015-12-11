@@ -40,5 +40,9 @@ func main() {
 		visitedhouses[santaposition]++
 	}
 		
-	fmt.Println("Houses by Santa: %d", len(visitedhouses))
+	for _, _ := range visitedhouses {
+		result++
+	}
+	fmt.Printf("%d houses have at least one present\n\n", result)
+
 }
