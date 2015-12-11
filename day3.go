@@ -41,7 +41,6 @@ func main() {
 	}
 	result := 0
 	for coords, prescount := range visitedhouses {
-		fmt.Printf("  %s has %d presents\n", coords, prescount)
 		result++
 	}
 	fmt.Printf("%d houses have at least one present\n\n", result)
