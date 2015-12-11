@@ -40,7 +40,7 @@ func main() {
 		visitedhouses[santaposition]++
 	}
 
-	fmt.Printf(len(visitedhouses))
+	fmt.Printf("Houses visited: %d", len(visitedhouses))
 
 
 }
