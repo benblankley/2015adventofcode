@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"io/ioutil"
 )
 
@@ -13,16 +14,21 @@ type house struct {
 type presentCount map[house]int
 
 func main() {
-	inputfile, err := ioutil.ReadFile("day3input.txt")
+	if len(os.Args) != 2 { 
+ 		os.Exit(1) 
+ 	} 
+
+	inputfile, err := ioutil.ReadFile(os.Args[1])
 
 	if err != nil {
 		panic(err)
 	}
 	visitedhouses := make(presentCount)
 	
- 		var santa house 
-  		for _, count := range inputfile { 
- 			switch count { 
+ 		var santa house
+ 		visitedhouses[santa]++
+  		for _, vm := range inputfile { 
+ 			switch vm { 
  			case '<': 
  				santa.x-- 
  			case 'v': 
@@ -35,5 +41,5 @@ func main() {
  		visitedhouses[santa]++
 		} 
 		
-	fmt.Printf("Houses by Santa: %d", len(visitedhouses))
+	fmt.Println("Houses by Santa: %d", len(visitedhouses))
 }
