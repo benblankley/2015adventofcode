@@ -37,7 +37,7 @@ func main() {
 		case '^':
 			santaposition.y--
 		}
-		visitedhouses[curpos]++
+		visitedhouses[santaposition]++
 	}
 		
 	fmt.Println("Houses by Santa: %d", len(visitedhouses))
