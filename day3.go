@@ -18,7 +18,7 @@ func main() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	visitedhouses := make(map[house]bool)
+	visitedhouses := make(map[house]int)
 	
  		var santa house 
   		for _, count := range file { 
@@ -32,7 +32,7 @@ func main() {
  			case '^': 
  				santa.y-- 
  			} 
- 		visitedhouses[santa] = true
+ 		visitedhouses[santa]++
 		} 
 		
 	fmt.Printf("Houses by Santa: %d", len(visitedhouses))
