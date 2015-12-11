@@ -39,6 +39,7 @@ func main() {
 		}
 		visitedhouses[santaposition]++
 	}
+	result := 0
 	for coords, prescount := range visitedhouses {
 		fmt.Printf("  %s has %d presents\n", coords, prescount)
 		result++
