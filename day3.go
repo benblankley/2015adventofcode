@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"math"
 )
 
 // create new struct type called "house", which is basically an array of x and y coordinates
@@ -25,19 +26,40 @@ func main() {
 	visitedhouses := make(presentCount)
 
 	santaposition := house{0, 0}
+	robosantaposition := house{0, 0}
 	visitedhouses[santaposition]++
+	visitedhouses[robosantaposition]++
+
+	var counter float64
 	for _, v := range input {
-		switch v {
-		case '<':
-			santaposition.x--
-		case 'v':
-			santaposition.y++
-		case '>':
-			santaposition.x++
-		case '^':
-			santaposition.y--
+		counter += 1
+//		fmt.Printf("%f  %f \n", counter, math.Mod(counter, 2))
+		if math.Mod(counter, 2) == 0 {
+			switch v {
+			case '<':
+				santaposition.x--
+			case 'v':
+				santaposition.y++
+			case '>':
+				santaposition.x++
+			case '^':
+				santaposition.y--
+			}
+			visitedhouses[santaposition]++
+		} else {
+                        switch v {
+                        case '<':
+                                robosantaposition.x--
+                        case 'v':
+                                robosantaposition.y++
+                        case '>':
+                                robosantaposition.x++
+                        case '^':
+                                robosantaposition.y--
+                        }
+                        visitedhouses[robosantaposition]++
 		}
-		visitedhouses[santaposition]++
+	
 	}
 
 	fmt.Printf("Houses visited: %d", len(visitedhouses))
