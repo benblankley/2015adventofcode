@@ -19,6 +19,13 @@ for COUNTER in $(seq 1 10000000)
   # Output debugging information
   # echo "Input: " $COUNTER$INPUTCODE " | "  "Santa MD5: " $sum " | "  "Cut Santa MD5: " $cutsum
 
+  # Output minimal debug information
+  if [ $(COUNTER % 1000 = 0) ]
+  then
+    echo "Step: " $COUNTER
+  fi
+
+
   if [ $cutsum = "00000" ]
   then
     echo "Lowest Value with five zeroes: " $COUNTER  "  MD5: " $sum
