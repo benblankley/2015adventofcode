@@ -19,11 +19,7 @@ for COUNTER in $(seq 1 10000000)
   # echo "Input: " $COUNTER$INPUTCODE " | "  "Santa MD5: " $sum " | "  "Cut Santa MD5: " $cutsum
 
   # Output minimal debug information
-<<<<<<< HEAD
-  if [ $((COUNTER % 1000)) -eq 0 ]
-=======
-  if [ (COUNTER % 1000 = 0) ]
->>>>>>> 23206808bd50f935554dfdbfafd3b3a9ae9cfba6
+  if [ (COUNTER % 1000) -eq 0 ]
   then
     echo "Step: " "$COUNTER"
   fi
