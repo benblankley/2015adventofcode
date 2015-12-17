@@ -38,7 +38,7 @@ func main() {
 
 	fmt.Println("--- Day 5: Doesn't He Have Intern-Elves For This? ---")
 	
-	var isnice map[string]bool
+	isnice := make(map[string]bool)
 	
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
