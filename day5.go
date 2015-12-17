@@ -75,12 +75,16 @@ func main() {
 //		Check for double letter combinations
 //		fmt.Println("line contains aa", line, strings.Contains(line, "aa"))
     		
-    		for i := range doubleletter {
-	    		if strings.Contains(line, doubleletter[i]) {
-    				fmt.Printf("line contains %q\n", doubleletter[i])
-    				isnice[line]=true
-			}
-    		}
+		if isline[line]=true {
+    			for i := range doubleletter {
+	    			if strings.Contains(line, doubleletter[i]) {
+    					fmt.Printf("line contains %q\n", doubleletter[i])
+    					isnice[line]=true
+				}
+    			}
+		} else {
+			isnice[line]=false
+		}
 //		Check for special cases
 		if (strings.Contains(line, "ab") || strings.Contains(line, "cd") || strings.Contains(line, "pq") || strings.Contains(line, "xy")) {
 			fmt.Println("Contains ab, cd, pq, or xy")
