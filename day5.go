@@ -89,6 +89,12 @@ func main() {
 
 	}
 	
-	fmt.Print("Number of nice strings: ", len(isnice))
-	fmt.Println(len(isnice[_: true]), "strings are nice.")
+	count := 0
+	for _, v := range isnice {
+		if v {
+			count++
+		}
+	}
+	
+	fmt.Println("Number of nice strings: ", count)
 }
