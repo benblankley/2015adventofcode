@@ -45,7 +45,6 @@ func main() {
 		line := scanner.Text()
 		fmt.Println("line is: ", line)
 //		fmt.Println(strings.ContainsAny(line, "a & e & i & o & u"))
-		isnice[line] = false
 		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "i")) {
 			fmt.Println("Contains aei")
 			isnice[line] = true
