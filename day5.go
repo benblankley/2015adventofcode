@@ -72,7 +72,13 @@ func main() {
 			isnice[line] = true			
 		}
 //		Check for double letter combinations
-		fmt.Println("line contains aa", line, strings.Contains(line, "aa"))
+//		fmt.Println("line contains aa", line, strings.Contains(line, "aa"))
+    		if strings.Contains(line, "aa") {
+    			fmt.Println("line contains aa")
+    			isnice[line]=true
+		}
+		return false
+}
 
 //		Check for special cases
 		if (strings.Contains(line, "ab") || strings.Contains(line, "cd") || strings.Contains(line, "pq") || strings.Contains(line, "xy")) {
