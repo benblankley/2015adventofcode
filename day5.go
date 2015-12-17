@@ -44,6 +44,8 @@ func main() {
 	for scanner.Scan() {
 		line := scanner.Text()
 		fmt.Println("line is: ", line)
+
+//		Check for vowel combinations
 //		fmt.Println(strings.ContainsAny(line, "a & e & i & o & u"))
 		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "i")) {
 			fmt.Println("Contains aei")
@@ -69,6 +71,14 @@ func main() {
 			fmt.Println("Contains iou")
 			isnice[line] = true			
 		}
+//		Check for double letter combinations
 
+//		Check for special cases
+		if (strings.Contains(line, "ab") || strings.Contains(line, "cd") || strings.Contains(line, "pq") || strings.Contains(line, "xy")) {
+			fmt.Println("Contains ab, cd, pq, or xy")
+			isnice[line] = false
+		}		
+
+}
 	}
 }
