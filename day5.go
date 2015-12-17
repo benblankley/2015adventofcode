@@ -77,9 +77,7 @@ func main() {
     			fmt.Println("line contains aa")
     			isnice[line]=true
 		}
-		return false
-}
-
+		
 //		Check for special cases
 		if (strings.Contains(line, "ab") || strings.Contains(line, "cd") || strings.Contains(line, "pq") || strings.Contains(line, "xy")) {
 			fmt.Println("Contains ab, cd, pq, or xy")
