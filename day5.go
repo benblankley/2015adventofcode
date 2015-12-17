@@ -38,28 +38,37 @@ func main() {
 
 	fmt.Println("--- Day 5: Doesn't He Have Intern-Elves For This? ---")
 	
+	var isnice map[string]bool
+	
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
 		fmt.Println("line is: ", line)
-		fmt.Println(strings.ContainsAny(line, "a & e & i & o & u"))
+//		fmt.Println(strings.ContainsAny(line, "a & e & i & o & u"))
+		isnice[line] := false
 		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "i")) {
 			fmt.Println("Contains aei")
+			isnice[line] = true
 		} 
 		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "o")) {
 			fmt.Println("Contains aeo")
+			isnice[line] = true
 		} 
 		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "u")) {
 			fmt.Println("Contains aeu")
+			isnice[line] = true
 		} 
 		if (strings.Contains(line, "e") && strings.Contains(line, "i") && strings.Contains(line, "o")) {
 			fmt.Println("Contains eio")
+			isnice[line] = true
 		}
 		if (strings.Contains(line, "e") && strings.Contains(line, "i") && strings.Contains(line, "u")) {
 			fmt.Println("Contains eiu")
+			isnice[line] = true
 		}
 		if (strings.Contains(line, "i") && strings.Contains(line, "o") && strings.Contains(line, "u")) {
 			fmt.Println("Contains iou")
+			isnice[line] = true			
 		}
 
 	}
