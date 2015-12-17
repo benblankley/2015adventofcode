@@ -39,6 +39,7 @@ func main() {
 	fmt.Println("--- Day 5: Doesn't He Have Intern-Elves For This? ---")
 	
 	isnice := make(map[string]bool)
+	doubleletter := []string{"aa", "bb", "cc", "dd", "ee"}
 	
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
@@ -73,11 +74,13 @@ func main() {
 		}
 //		Check for double letter combinations
 //		fmt.Println("line contains aa", line, strings.Contains(line, "aa"))
-    		if strings.Contains(line, "aa") {
-    			fmt.Println("line contains aa")
-    			isnice[line]=true
-		}
-		
+    		
+    		for i := 0; i <= len(doubleletter); i++ {
+	    		if strings.Contains(line, doubleletter[i]) {
+    				fmt.Printf("line contains %q\n", doubleletter[i])
+    				isnice[line]=true
+			}
+    		}
 //		Check for special cases
 		if (strings.Contains(line, "ab") || strings.Contains(line, "cd") || strings.Contains(line, "pq") || strings.Contains(line, "xy")) {
 			fmt.Println("Contains ab, cd, pq, or xy")
