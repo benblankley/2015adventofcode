@@ -79,6 +79,5 @@ func main() {
 			isnice[line] = false
 		}		
 
-}
 	}
 }
