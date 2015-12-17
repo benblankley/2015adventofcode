@@ -28,7 +28,7 @@ import (
 
 
 func main() {
-	file, err := os.Open("./day5input.txt")
+	file, err := os.Open("./day5input2.txt")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
