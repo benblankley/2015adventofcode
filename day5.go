@@ -75,7 +75,7 @@ func main() {
 //		Check for double letter combinations
 //		fmt.Println("line contains aa", line, strings.Contains(line, "aa"))
     		
-		if isline[line]=true {
+		if isline[line] {
     			for i := range doubleletter {
 	    			if strings.Contains(line, doubleletter[i]) {
     					fmt.Printf("line contains %q\n", doubleletter[i])
