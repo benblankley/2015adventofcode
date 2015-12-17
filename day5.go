@@ -25,13 +25,21 @@ func main() {
 		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "i")) {
 			fmt.Println("Contains aei")
 		} 
-		
-
+		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "o")) {
+			fmt.Println("Contains aeo")
+		} 
+		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "u")) {
+			fmt.Println("Contains aeu")
+		} 
 		if (strings.Contains(line, "e") && strings.Contains(line, "i") && strings.Contains(line, "o")) {
 			fmt.Println("Contains eio")
+		}
+		if (strings.Contains(line, "e") && strings.Contains(line, "i") && strings.Contains(line, "u")) {
+			fmt.Println("Contains eiu")
 		}
 		if (strings.Contains(line, "i") && strings.Contains(line, "o") && strings.Contains(line, "u")) {
 			fmt.Println("Contains iou")
 		}
+
 	}
 }
