@@ -90,5 +90,5 @@ func main() {
 	}
 	
 	fmt.Print("Number of nice strings: ", len(isnice))
-	fmt.Println(len(isnice[_, true]), "strings are nice.")
+	fmt.Println(len(isnice[_: true]), "strings are nice.")
 }
