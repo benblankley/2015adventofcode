@@ -22,5 +22,16 @@ func main() {
 		line := scanner.Text()
 		fmt.Println("line is: ", line)
 		fmt.Println(strings.ContainsAny(line, "a & e & i & o & u"))
+		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "i")) {
+			fmt.Println("Contains aei")
+		} 
+		
+
+		if (strings.Contains(line, "e") && strings.Contains(line, "i") && strings.Contains(line, "o")) {
+			fmt.Println("Contains eio")
+		}
+		if (strings.Contains(line, "i") && strings.Contains(line, "o") && strings.Contains(line, "u")) {
+			fmt.Println("Contains iou")
+		}
 	}
 }
