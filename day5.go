@@ -40,50 +40,60 @@ func main() {
 	fmt.Println("--- Day 5: Doesn't He Have Intern-Elves For This? ---")
 	
 	isnice := make(map[string]bool)
-	doubleletter := []string{"aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", "ii", "jj", "kk", "ll", "mm", "nn", "oo", "pp", "qq", "rr", "ss", "tt", "uu", "vv", "ww", "xx", "yy", "zz"}
-	
+
 	scanner := bufio.NewScanner(file)
 
-	var validID = regexp.MustCompile(".*[aeiou].*[aeiou].*[aeiou].*")
+	var validID = regexp.MustCompile("(.*[aeiou]){3}")
+	var part1, part2, part3 bool
+
 	for scanner.Scan() {
 		line := scanner.Text()
-		fmt.Println("line is: ", line)
+		fmt.Printf("%q ", line)
 
 //		Check for vowel combinations
 		
 		if validID.MatchString(line) {
-			isnice[line] = true
-//			fmt.Println(" has 3 vowels, ")
-    			for i := range doubleletter {
-	    			if strings.Contains(line, doubleletter[i]) {
-    					fmt.Printf("%q has 3 vowels, contains double letters, ", line)
-    					isnice[line]=true
-				}		
-			}
+			part1 = true
+			fmt.Printf(" has 3 vowels ")
 		} else {
-			isnice[line]=false
+			part1 = false
+			fmt.Printf(" does not have 3 vowels ")
+
 		}
 		
 
 //		Check for double letter combinations
 //		fmt.Println("line contains aa", line, strings.Contains(line, "aa"))
     		
-//		if isnice[line] {
-//    			for i := range doubleletter {
-//	    			if strings.Contains(line, doubleletter[i]) {
-//    					fmt.Println(" contains double letters, ")
-//   					isnice[line]=true
-//				}
-//   			}
-//		} else {
-//			isnice[line]=false
-//		}
+		part2 = false
+		var lastChar byte
+    		for i := 0; i < len(line); i++ {
+		      	if line[i] == lastChar {
+				part2 = true
+			}
+			lastChar = line[i];
+    		}
+		if part2 {
+			fmt.Printf(" double letter found ")
+		} else {
+			fmt.Printf(" no double letter found ")
+		}
+
 
 //		Check for special cases
+		part3 = true
 		if (strings.Contains(line, "ab") || strings.Contains(line, "cd") || strings.Contains(line, "pq") || strings.Contains(line, "xy")) {
-			fmt.Println("; contains ab, cd, pq, or xy\n")
-			isnice[line] = false
-		}		
+			fmt.Printf(" contains ab, cd, pq, or xy ")
+			part3 = false
+		} else {
+			fmt.Printf(" no bad chars ")
+		}
+
+// Print some debugging information
+		fmt.Print(part1, part2, part3)
+		isnice[line] = part1 && part2 && part3 		
+
+		fmt.Printf(" Result: %t \n", isnice[line])		
 
 	}
 	
