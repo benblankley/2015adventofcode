@@ -47,31 +47,34 @@ func main() {
 		fmt.Println("line is: ", line)
 
 //		Check for vowel combinations
+
+
 //		fmt.Println(strings.ContainsAny(line, "a & e & i & o & u"))
-		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "i")) {
-			fmt.Println("Contains aei")
-			isnice[line] = true
-		} 
-		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "o")) {
-			fmt.Println("Contains aeo")
-			isnice[line] = true
-		} 
-		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "u")) {
-			fmt.Println("Contains aeu")
-			isnice[line] = true
-		} 
-		if (strings.Contains(line, "e") && strings.Contains(line, "i") && strings.Contains(line, "o")) {
-			fmt.Println("Contains eio")
-			isnice[line] = true
-		}
-		if (strings.Contains(line, "e") && strings.Contains(line, "i") && strings.Contains(line, "u")) {
-			fmt.Println("Contains eiu")
-			isnice[line] = true
-		}
-		if (strings.Contains(line, "i") && strings.Contains(line, "o") && strings.Contains(line, "u")) {
-			fmt.Println("Contains iou")
-			isnice[line] = true			
-		}
+//		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "i")) {
+//			fmt.Println("Contains aei")
+//			isnice[line] = true
+//		} 
+//		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "o")) {
+//			fmt.Println("Contains aeo")
+//			isnice[line] = true
+//		} 
+//		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "u")) {
+//			fmt.Println("Contains aeu")
+//			isnice[line] = true
+//		} 
+//		if (strings.Contains(line, "e") && strings.Contains(line, "i") && strings.Contains(line, "o")) {
+//			fmt.Println("Contains eio")
+//			isnice[line] = true
+//		}
+//		if (strings.Contains(line, "e") && strings.Contains(line, "i") && strings.Contains(line, "u")) {
+//			fmt.Println("Contains eiu")
+//			isnice[line] = true
+//		}
+//		if (strings.Contains(line, "i") && strings.Contains(line, "o") && strings.Contains(line, "u")) {
+//			fmt.Println("Contains iou")
+//			isnice[line] = true			
+//		}
+
 //		Check for double letter combinations
 //		fmt.Println("line contains aa", line, strings.Contains(line, "aa"))
     		
