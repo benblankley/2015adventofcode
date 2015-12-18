@@ -6,6 +6,7 @@ import (
 	"os"
 //	"strconv"
 	"strings"
+	"regexp"
 )
 
 //--- Day 5: Doesn't He Have Intern-Elves For This? ---
@@ -28,7 +29,7 @@ import (
 
 
 func main() {
-	file, err := os.Open("./day5input2.txt")
+	file, err := os.Open("./day5input.txt")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
@@ -42,55 +43,45 @@ func main() {
 	doubleletter := []string{"aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", "ii", "jj", "kk", "ll", "mm", "nn", "oo", "pp", "qq", "rr", "ss", "tt", "uu", "vv", "ww", "xx", "yy", "zz"}
 	
 	scanner := bufio.NewScanner(file)
+
+	var validID = regexp.MustCompile(".*[aeiou].*[aeiou].*[aeiou].*")
 	for scanner.Scan() {
 		line := scanner.Text()
 		fmt.Println("line is: ", line)
 
 //		Check for vowel combinations
-//		Regular Expressions Solution
-
-//		fmt.Println(strings.ContainsAny(line, "a & e & i & o & u"))
-//		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "i")) {
-//			fmt.Println("Contains aei")
-//			isnice[line] = true
-//		} 
-//		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "o")) {
-//			fmt.Println("Contains aeo")
-//			isnice[line] = true
-//		} 
-//		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "u")) {
-//			fmt.Println("Contains aeu")
-//			isnice[line] = true
-//		} 
-//		if (strings.Contains(line, "e") && strings.Contains(line, "i") && strings.Contains(line, "o")) {
-//			fmt.Println("Contains eio")
-//			isnice[line] = true
-//		}
-//		if (strings.Contains(line, "e") && strings.Contains(line, "i") && strings.Contains(line, "u")) {
-//			fmt.Println("Contains eiu")
-//			isnice[line] = true
-//		}
-//		if (strings.Contains(line, "i") && strings.Contains(line, "o") && strings.Contains(line, "u")) {
-//			fmt.Println("Contains iou")
-//			isnice[line] = true			
-//		}
+		
+		if validID.MatchString(line) {
+			isnice[line] = true
+//			fmt.Println(" has 3 vowels, ")
+    			for i := range doubleletter {
+	    			if strings.Contains(line, doubleletter[i]) {
+    					fmt.Printf("%q has 3 vowels, contains double letters, ", line)
+    					isnice[line]=true
+				}		
+			}
+		} else {
+			isnice[line]=false
+		}
+		
 
 //		Check for double letter combinations
 //		fmt.Println("line contains aa", line, strings.Contains(line, "aa"))
     		
-		if isnice[line] {
-    			for i := range doubleletter {
-	    			if strings.Contains(line, doubleletter[i]) {
-    					fmt.Printf("line contains %q\n", doubleletter[i])
-    					isnice[line]=true
-				}
-    			}
-		} else {
-			isnice[line]=false
-		}
+//		if isnice[line] {
+//    			for i := range doubleletter {
+//	    			if strings.Contains(line, doubleletter[i]) {
+//    					fmt.Println(" contains double letters, ")
+//   					isnice[line]=true
+//				}
+//   			}
+//		} else {
+//			isnice[line]=false
+//		}
+
 //		Check for special cases
 		if (strings.Contains(line, "ab") || strings.Contains(line, "cd") || strings.Contains(line, "pq") || strings.Contains(line, "xy")) {
-			fmt.Println("Contains ab, cd, pq, or xy")
+			fmt.Println("; contains ab, cd, pq, or xy\n")
 			isnice[line] = false
 		}		
 
