@@ -47,7 +47,7 @@ func main() {
 		fmt.Println("line is: ", line)
 
 //		Check for vowel combinations
-
+//		Regular Expressions Solution
 
 //		fmt.Println(strings.ContainsAny(line, "a & e & i & o & u"))
 //		if (strings.Contains(line, "a") && strings.Contains(line, "e") && strings.Contains(line, "i")) {
