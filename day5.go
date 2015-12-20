@@ -38,11 +38,15 @@ func main() {
 	fmt.Println("--- Day 5: Doesn't He Have Intern-Elves For This? ---")
 
 	isnice := make(map[string]bool)
+	// Part 2
+	isnice2 := make(map[string]bool)
 
 	scanner := bufio.NewScanner(file)
 
 	var validID = regexp.MustCompile("(.*[aeiou]){3}")
 	var part1, part2, part3 bool
+	// Part 2
+	var part4, part5 bool
 
 	for scanner.Scan() {
 		line := scanner.Text()
@@ -85,13 +89,31 @@ func main() {
 		//	fmt.Printf(" no bad chars ")
 		}
 
+		part4=false
+                for i := 0; i < len(line)-2; i++ {
+			xy := line[i:i+2]
+			if strings.Contains(line[i+2:], xy) {
+          	              part4 = true
+		              //fmt.Printf(" double doubles on line: %q \n", line)
+                        }
+                }
+
+		part5 = false
+                for i := 0; i < len(line)-2; i++ {
+                        if line[i] == line[i+2] {
+                                part5 = true
+                                //fmt.Printf(" xyx on line: %q \n", line)
+                        }
+                }
+
+
 		// Print some debugging information
 		// fmt.Print(part1, part2, part3)
 		// fmt.Printf(" | Result: %t \n", isnice[line])
 		
 		// Calculate nice score for line
 		isnice[line] = part1 && part2 && part3
-
+		isnice2[line] = part4 && part5
 	}
 
 	count := 0
@@ -101,5 +123,15 @@ func main() {
 		}
 	}
 
-	fmt.Println("Number of nice strings: ", count)
+	// Part 2
+	count2 := 0
+	for _, v := range isnice2 {
+		if v {
+			count2++
+		}
+	}
+
+
+	fmt.Println("Number of nice strings (Part 1): ", count)
+	fmt.Println("Number of nice strings (Part 2): ", count2)
 }
