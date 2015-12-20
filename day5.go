@@ -46,16 +46,16 @@ func main() {
 
 	for scanner.Scan() {
 		line := scanner.Text()
-		fmt.Printf("%q ", line)
+		// fmt.Printf("%q ", line)
 
 		//		Check for vowel combinations
 
 		if validID.MatchString(line) {
 			part1 = true
-			fmt.Printf(" has 3 vowels ")
+		//	fmt.Printf(" has 3 vowels ")
 		} else {
 			part1 = false
-			fmt.Printf(" does not have 3 vowels ")
+		//	fmt.Printf(" does not have 3 vowels ")
 
 		}
 
@@ -71,25 +71,26 @@ func main() {
 			lastChar = line[i]
 		}
 		if part2 {
-			fmt.Printf(" double letter found ")
+		//	fmt.Printf(" double letter found ")
 		} else {
-			fmt.Printf(" no double letter found ")
+		//	fmt.Printf(" no double letter found ")
 		}
 
 		//		Check for special cases
 		part3 = true
 		if strings.Contains(line, "ab") || strings.Contains(line, "cd") || strings.Contains(line, "pq") || strings.Contains(line, "xy") {
-			fmt.Printf(" contains ab, cd, pq, or xy ")
+		//	fmt.Printf(" contains ab, cd, pq, or xy ")
 			part3 = false
 		} else {
-			fmt.Printf(" no bad chars ")
+		//	fmt.Printf(" no bad chars ")
 		}
 
 		// Print some debugging information
 		// fmt.Print(part1, part2, part3)
+		// fmt.Printf(" | Result: %t \n", isnice[line])
+		
+		// Calculate nice score for line
 		isnice[line] = part1 && part2 && part3
-
-		fmt.Printf(" | Result: %t \n", isnice[line])
 
 	}
 
