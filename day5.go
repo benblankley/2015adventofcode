@@ -4,9 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-//	"strconv"
-	"strings"
 	"regexp"
+	"strings"
 )
 
 //--- Day 5: Doesn't He Have Intern-Elves For This? ---
@@ -27,7 +26,6 @@ import (
 //
 // How many strings are nice?
 
-
 func main() {
 	file, err := os.Open("./day5input.txt")
 	if err != nil {
@@ -38,7 +36,7 @@ func main() {
 	defer file.Close()
 
 	fmt.Println("--- Day 5: Doesn't He Have Intern-Elves For This? ---")
-	
+
 	isnice := make(map[string]bool)
 
 	scanner := bufio.NewScanner(file)
@@ -50,8 +48,8 @@ func main() {
 		line := scanner.Text()
 		fmt.Printf("%q ", line)
 
-//		Check for vowel combinations
-		
+		//		Check for vowel combinations
+
 		if validID.MatchString(line) {
 			part1 = true
 			fmt.Printf(" has 3 vowels ")
@@ -60,49 +58,47 @@ func main() {
 			fmt.Printf(" does not have 3 vowels ")
 
 		}
-		
 
-//		Check for double letter combinations
-//		fmt.Println("line contains aa", line, strings.Contains(line, "aa"))
-    		
+		//		Check for double letter combinations
+		//		fmt.Println("line contains aa", line, strings.Contains(line, "aa"))
+
 		part2 = false
 		var lastChar byte
-    		for i := 0; i < len(line); i++ {
-		      	if line[i] == lastChar {
+		for i := 0; i < len(line); i++ {
+			if line[i] == lastChar {
 				part2 = true
 			}
-			lastChar = line[i];
-    		}
+			lastChar = line[i]
+		}
 		if part2 {
 			fmt.Printf(" double letter found ")
 		} else {
 			fmt.Printf(" no double letter found ")
 		}
 
-
-//		Check for special cases
+		//		Check for special cases
 		part3 = true
-		if (strings.Contains(line, "ab") || strings.Contains(line, "cd") || strings.Contains(line, "pq") || strings.Contains(line, "xy")) {
+		if strings.Contains(line, "ab") || strings.Contains(line, "cd") || strings.Contains(line, "pq") || strings.Contains(line, "xy") {
 			fmt.Printf(" contains ab, cd, pq, or xy ")
 			part3 = false
 		} else {
 			fmt.Printf(" no bad chars ")
 		}
 
-// Print some debugging information
-		fmt.Print(part1, part2, part3)
-		isnice[line] = part1 && part2 && part3 		
+		// Print some debugging information
+		// fmt.Print(part1, part2, part3)
+		isnice[line] = part1 && part2 && part3
 
-		fmt.Printf(" Result: %t \n", isnice[line])		
+		fmt.Printf(" | Result: %t \n", isnice[line])
 
 	}
-	
+
 	count := 0
 	for _, v := range isnice {
 		if v {
 			count++
 		}
 	}
-	
+
 	fmt.Println("Number of nice strings: ", count)
 }
