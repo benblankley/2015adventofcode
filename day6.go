@@ -5,7 +5,8 @@ import (
 	"fmt"
 	"os"
 //	"regexp"
-//	"strings"
+	"strings"
+	"strconv"
 )
 
 // Because your neighbors keep defeating you in the holiday house decorating 
@@ -47,17 +48,75 @@ func main() {
 
 	fmt.Println("--- Day 6: Probably a Fire Hazard ---")
 
-	lights := [][]bool{}
+	lights := [1000][1000]bool{}
 
 	scanner := bufio.NewScanner(file)
+	x_start := 0
+	y_start := 0
+	x_end := 0
+	y_end := 0
 
+	// Main Loop
 	for scanner.Scan() {
 		line := scanner.Text()
 		fmt.Printf("%q ", line)
+		
+		splitline := strings.Split(line, " ")
+		fmt.Printf("%q \n", splitline)
 
-
+		if splitline[0] == "toggle" {
+			// Toggle lights
+			s1 := strings.Split(splitline[1], ",")
+			x_start, _ = strconv.Atoi(s1[0])
+			y_start, _ = strconv.Atoi(s1[1])
+			s2 := strings.Split(splitline[3], ",")
+			x_end, _ = strconv.Atoi(s2[0])
+			y_end, _ = strconv.Atoi(s2[1])
+			for i := x_start; i < x_end; i++ {
+				for j := y_start; j < y_end; j++ {
+				    lights[i][j] = !lights[i][j]
+				}
+			}
+		} else if splitline[0] == "turn" && splitline[1] == "on" {
+			// Turn on lights
+			s1 := strings.Split(splitline[2], ",")
+			x_start, _ = strconv.Atoi(s1[0])
+			y_start, _ = strconv.Atoi(s1[1])
+			s2 := strings.Split(splitline[4], ",")
+			x_end, _ = strconv.Atoi(s2[0])
+			y_end, _ = strconv.Atoi(s2[1])
+                        for i := x_start; i < x_end; i++ {
+                                for j := y_start; j < y_end; j++ {
+                                    lights[i][j] = true
+                                }
+                        }
+		} else if splitline[0] == "turn" && splitline[1] == "off" {
+			// Turn off lights
+			s1 := strings.Split(splitline[2], ",")
+                        x_start, _ = strconv.Atoi(s1[0])
+                        y_start, _ = strconv.Atoi(s1[1])
+			s2 := strings.Split(splitline[4], ",")
+                        x_end, _ = strconv.Atoi(s2[0])
+                        y_end, _ = strconv.Atoi(s2[1])
+                        for i := x_start; i < x_end; i++ {
+                                for j := y_start; j < y_end; j++ {
+                                    lights[i][j] = false
+                                }
+                        }
+		}
+		// fmt.Printf("%d\n", instruction)
+		fmt.Printf("x_start %d\n", x_start)
+		fmt.Printf("y_start %d\n", y_start)
+		fmt.Printf("x_end %d\n", x_end)
+		fmt.Printf("y_end %d\n", y_end)
 
 	}
+	lightcount := 0
+        for i := 0; i < 1000; i++ {
+        	for j := 0; j < 1000; j++ {
+                     if lights[i][j] { lightcount++ }
+                }
+      	}
 
-	fmt.Println("Number of lights on: ", len(lights))
+	fmt.Println("Number of lights on: ", lightcount)
 }
