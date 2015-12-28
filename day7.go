@@ -57,7 +57,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-//	"strconv"
+	"strconv"
 	"strings"
 )
 
@@ -101,7 +101,11 @@ func main() {
 			fmt.Print(" contains NOT \n") 
 			expression = true }
 		if expression == false {
-			fmt.Print(" assigning value \n") }
+			fmt.Print(" assigning value \n") 
+			value, _ := strconv.ParseUint(formattedwire[0], 10, 64)
+			variable := formattedwire[1]
+			wires[variable] = uint16(value)
+			}
 		
 	}
 	fmt.Print(wires)
