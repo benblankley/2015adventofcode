@@ -63,7 +63,7 @@ import (
 
 
 func main() {
-	file, err := os.Open("./day7input2.txt")
+	file, err := os.Open("./day7input.txt")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
@@ -82,24 +82,52 @@ func main() {
 //		fmt.Printf("%q \n", line)
 		formattedwire := strings.Split(line, " -> ")
 		fmt.Printf("%q ", formattedwire)
-		wires[formattedwire[1]] = 30000
+		wires[formattedwire[1]] = 0
 
 		expression := false
 		if strings.Contains(formattedwire[0], "AND") {
 			fmt.Print(" contains AND \n") 
-			expression = true }
+			expression = true 
+			part := strings.Split(formattedwire[0], " AND ")
+			part0 := part[0]
+			part1 := part[1]
+			wires[formattedwire[1]] = wires[part0] & wires[part1]
+//			fmt.Print(wires[formattedwire[1]])
+			}
 		if strings.Contains(formattedwire[0], "OR") {
 			fmt.Print(" contains OR \n") 
-			expression = true }
+			expression = true 
+			part := strings.Split(formattedwire[0], " OR ")
+			part0 := part[0]
+			part1 := part[1]
+			wires[formattedwire[1]] = wires[part0] | wires[part1]
+			}
 		if strings.Contains(formattedwire[0], "LSHIFT") {
 			fmt.Print(" contains LSHIFT \n") 
-			expression = true }
+			expression = true 
+			part := strings.Split(formattedwire[0], " LSHIFT ")
+			lshifted := part[0]
+			var iterations uint64
+			iterations, _ = strconv.ParseUint(part[1], 10, 64)
+			wires[formattedwire[1]] = wires[lshifted] << iterations
+			}
 		if strings.Contains(formattedwire[0], "RSHIFT") {
 			fmt.Print(" contains RSHIFT \n") 
-			expression = true }
+			expression = true 
+			part := strings.Split(formattedwire[0], " RSHIFT ")
+			rshifted := part[0]
+			var iterations uint64
+			iterations, _ = strconv.ParseUint(part[1], 10, 64)
+			wires[formattedwire[1]] = wires[rshifted] >> iterations
+			}
 		if strings.Contains(formattedwire[0], "NOT") {
 			fmt.Print(" contains NOT \n") 
-			expression = true }
+			expression = true
+			part := strings.Split(formattedwire[0], "NOT ")
+			part1 := part[1]
+//			fmt.Print("Part1: ", part1)
+			wires[formattedwire[1]] = 65535 - wires[part1]
+			}
 		if expression == false {
 			fmt.Print(" assigning value \n") 
 			value, _ := strconv.ParseUint(formattedwire[0], 10, 64)
@@ -108,5 +136,6 @@ func main() {
 			}
 		
 	}
-	fmt.Print(wires)
+//	fmt.Print(wires)
+	fmt.Print("Value of a:", wires["a"], "\n")
 }
